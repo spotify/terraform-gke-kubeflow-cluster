@@ -27,11 +27,13 @@ America 2019][kubecon-talk].
 To use this within Terraform, add a `module` block like:
 
 ```hcl
-# TODO: not sure if this is correct, will doublecheck after first release to https://www.terraform.io/docs/registry/modules/publish.html
-module "kubeflow_cluster" {
-  source = "spotify/gke-kubeflow-cluster"
+module "kubeflow-cluster" {
+  source  = "spotify/kubeflow-cluster/gke"
+  version = "0.0.1"
 }
 ```
+
+For more details, see https://registry.terraform.io/modules/spotify/kubeflow-cluster/gke/0.0.1
 
 ## Module details
 
