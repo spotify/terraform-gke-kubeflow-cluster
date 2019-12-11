@@ -14,6 +14,7 @@ resource "google_container_cluster" "kubeflow_cluster" {
 
   name     = "${var.cluster_name}"
   location = "${var.cluster_zone}"
+  project  = "${var.project}"
 
   # TPU requires a separate ip range (https://cloud.google.com/tpu/docs/kubernetes-engine-setup)
   # Disable it for now until we figure out how it works with xpn network
@@ -102,6 +103,7 @@ resource "google_container_node_pool" "main_pool" {
 
   cluster  = "${google_container_cluster.kubeflow_cluster.name}"
   location = "${var.cluster_zone}"
+  project  = "${var.project}"
 
   name = "${var.main_node_pool_name}"
 
@@ -149,6 +151,7 @@ resource "google_container_node_pool" "gpu_pool" {
 
   cluster  = "${google_container_cluster.kubeflow_cluster.name}"
   location = "${var.cluster_zone}"
+  project  = "${var.project}"
 
   name = "${var.gpu_node_pool_name}"
 
@@ -201,6 +204,7 @@ resource "google_container_node_pool" "highmem_pool" {
 
   cluster  = "${google_container_cluster.kubeflow_cluster.name}"
   location = "${var.cluster_zone}"
+  project  = "${var.project}"
 
   name = "${var.highmem_node_pool_name}"
 
@@ -246,6 +250,7 @@ resource "google_container_node_pool" "highmem_pool" {
 resource "google_compute_disk" "artifact_store" {
   name                      = "${var.cluster_name}-artifact-store"
   zone                      = "${var.cluster_zone}"
+  project                   = "${var.project}"
   physical_block_size_bytes = 4096
   size                      = 200
   labels = {
