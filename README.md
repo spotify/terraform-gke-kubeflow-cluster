@@ -76,6 +76,14 @@ evidence, the behavior so far is that the most recent version that matches the
 fuzzy version is used. For example, `node_version = "1.11"` results in GKE
 nodes running 1.11.7-gke.6 if that's the most recent version.
 
+## Releasing new versions of the module
+
+See https://www.terraform.io/docs/registry/modules/publish.html#releasing-new-versions
+
+A webhook has been automatically added to the repo, and a new "release" will be 
+visible in the Terraform Registry whenever a new tag is pushed that looks like a 
+semantic version (e.g. "v1.2.3"). So to cut a release, simply tag a commit and 
+make sure to push the tag to Github with `git push --tags`.
 
 ## Code of Conduct
 This project adheres to the [Open Code of Conduct][code-of-conduct]. By participating, you are expected to honor this code.
