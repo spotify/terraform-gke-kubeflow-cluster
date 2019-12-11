@@ -17,6 +17,8 @@ locals {
 resource "google_storage_bucket" "backup_bucket" {
   name = "${var.project}_${var.cluster_region}_${var.cluster_name}_backup"
 
+  bucket_policy_only = true
+
   location = "EU"
 
   # don't destroy buckets containing backup data if re-creating a cluster

@@ -1,13 +1,25 @@
 # set project for the provider as a whole to avoid having to repeat it for each resource
 provider "google" {
   project = "${var.project}"
+  version = "~> 2.7"
 }
 
 provider "google-beta" {
   project = "${var.project}"
+  version = "~> 2.7"
+}
+
+provider "random" {
+  version = "~> 2.2"
+}
+
+provider "null" {
+  version = "~> 2.1"
 }
 
 provider "kubernetes" {
+  version = "~> 1.7"
+
   # don't load config from ~/.kube/config
   load_config_file = false
 
